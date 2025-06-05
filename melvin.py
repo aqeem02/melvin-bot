@@ -16,6 +16,8 @@ secret2 = ""
 secret2text = ""
 secret3 = "1364423524332343396"
 secret3text = ""
+secret4 = ""
+secret4text = ""
 
 #intents
 intents = discord.Intents.default()
@@ -38,12 +40,14 @@ async def on_ready():
         print(f'Guild: {guild.name}')
         for emoji in guild.emojis:
 
-            if emoji.name.lower().startswith("mel") or emoji.name.lower() == "aqeem":
+            if emoji.name.lower().startswith("mel") or "aqeem" in emoji.name.lower():
                 #secrets
                 if emoji.name == "Melvin":
                     secret = emoji.id
                 elif emoji.name == "Melien2":
                     secret2 = emoji.id
+                elif emoji.name == "SSRAQEEM":
+                    secret4 = emoji.id
 
                 #kingdom
                 elif emoji.name == "Melking":
@@ -121,7 +125,7 @@ async def on_ready():
 
                 print(f'{emoji.name} - {emoji.id}')
    
-    print(others[0:])
+    print(secret4)
 
 # @bot.command()
 # async def hello(ctx):
@@ -190,10 +194,10 @@ async def on_message(message):
             cooldowns[user_id] = now  # update time
 
             # Simulate the rolling process
-            r = random.randint(0, 250)
+            r = random.randint(0, 1000)
             print(r)
 
-            if r == 0:
+            if r <= 3:
                 await message.channel.send(f"<@{message.author.id}> You rolled a..? The box is shining bright, you got:")
                 w = random.randint(0, 1)
                 if w == 1:
@@ -201,24 +205,28 @@ async def on_message(message):
                 else:
                     await message.channel.send(f"<:_:{secret2}>")
 
-            elif r <= 83:
+            elif r <= 335:
                 x = random.randint(0, len(kingdom) - 1)
                 await message.channel.send(f"<@{message.author.id}> You rolled a Melkingdom Citizen! You got:")
                 await message.channel.send(f"<:_:{kingdom[x]}>")
 
-            elif r <= 166:
+            elif r <= 665:
                 y = random.randint(0, len(pgr) - 1)
                 await message.channel.send(f"<@{message.author.id}> You rolled a PGR Melvinner! You got:")
                 await message.channel.send(f"<:_:{pgr[y]}>")
 
-            elif r <= 249:
+            elif r <= 995:
                 z = random.randint(0, len(others) - 1)
                 await message.channel.send(f"<@{message.author.id}> You rolled a random Melvinner? You got:")
                 await message.channel.send(f"<:_:{others[z]}>")
 
-            else:
+            elif r <= 999:
                 await message.channel.send(f"<@{message.author.id}> You rolled a..? Your box is empty!")
                 await message.channel.send(f"<a:_:{secret3}>")
+
+            else:
+                await message.channel.send(f"<@{message.author.id}> You heard a hatching noise! YOU GOT:")
+                await message.channel.send(f"<:_:{secret4}>")
 
         # else:
         #     await message.channel.send("ALTERNATE ART MELIEN!!!");

@@ -232,5 +232,10 @@ async def on_message(message):
 #     await ctx.send("Hello, Melvin here :melheart:")
 
 
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+TOKEN = os.getenv("DISCORD_TOKEN")
 # Step 3: Run your bot (replace YOUR_BOT_TOKEN)
-bot.run('MTM4MDA4MzcwOTk4MTQ5MTI3MQ.GxyspT.XTBu6C2Ra7_Aa8eZhaoRtnnOF8zqI4NOm-kEjI')
+bot.run(TOKEN)

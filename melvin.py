@@ -125,7 +125,7 @@ async def on_ready():
 
                 print(f'{emoji.name} - {emoji.id}')
    
-    print(secret4)
+    print(others[0:])
 
 # @bot.command()
 # async def hello(ctx):
@@ -226,7 +226,7 @@ async def on_message(message):
 
             else:
                 await message.channel.send(f"<@{message.author.id}> You heard a hatching noise! YOU GOT:")
-                await message.channel.send(f"<:_:{secret4}>")
+                await message.channel.send(f"<:_:1380197629522214922>")
 
         # else:
         #     await message.channel.send("ALTERNATE ART MELIEN!!!");
